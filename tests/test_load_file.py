@@ -12,7 +12,7 @@ PY3 = sys.version_info[0] >= 3
 
 class LoadFileTestCase(IoTestCase):
     def setUp(self):
-        self.types = ('csv', 'json', 'xml', 'xls', 'xlsx')
+        self.types = ('csv', 'json', 'xml', 'xls', 'xlsx', 'yaml')
 
     def test_load_file(self):
         for ext in self.types:

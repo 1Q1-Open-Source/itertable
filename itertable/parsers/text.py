@@ -1,4 +1,5 @@
 import json
+import yaml
 from .readers import csv, UNICODE_CSV, SkipPreludeReader
 from xml.etree import ElementTree as ET
 
@@ -127,3 +128,33 @@ class XmlParser(BaseParser):
             sel = ET.SubElement(el, key)
             sel.text = str(item.get(key))
         return el
+
+
+class YamlParser(BaseParser):
+    indent = None
+    namespace = None
+
+    def parse(self):
+        try:
+            obj = yaml.safe_load(self.file)
+            if self.namespace:
+                for key in self.namespace.split('.'):
+                    obj = obj[key]
+            self.data = list(map(self.parse_item, obj))
+        except ValueError:
+            raise ParseFailed
+
+    def parse_item(self, item):
+        return item
+
+    def dump(self, file=None):
+        if file is None:
+            file = self.file
+        obj = list(map(self.dump_item, self.data))
+        if self.namespace:
+            for key in reversed(self.namespace.split('.')):
+                obj = {key: obj}
+        yaml.safe_dump(obj, file, indent=self.indent)
+
+    def dump_item(self, item):
+        return item

@@ -1,6 +1,6 @@
 from .base import BaseIter
 from .loaders import FileLoader, NetLoader, StringLoader
-from .parsers import CsvParser, JsonParser, XmlParser, ExcelParser
+from .parsers import CsvParser, JsonParser, XmlParser, ExcelParser, YamlParser
 from .mappers import TupleMapper
 from .exceptions import ParseFailed
 import mimetypes
@@ -12,6 +12,13 @@ PARSERS = {
     'text/csv': CsvParser,
     'application/json': JsonParser,
     'application/xml': XmlParser,
+    # Because YAML does not have a standard MIME Type. 
+    'text/yaml': YamlParser,
+    'application/yaml': YamlParser
+    'text/x-yaml': YamlParser,
+    'application/x-yaml': YamlParser,
+    'text/vnd.yaml': YamlParser,
+    'application/vnd.yaml': YamlParser
 }
 
 # Save generated classes to avoid recreating them

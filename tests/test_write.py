@@ -1,5 +1,5 @@
 from itertable import load_file
-from itertable import CsvFileIter, JsonFileIter, XmlFileIter, ExcelFileIter
+from itertable import CsvFileIter, JsonFileIter, XmlFileIter, ExcelFileIter, YamlParser
 from .base import IoTestCase
 
 
@@ -14,13 +14,14 @@ class LoadFileTestCase(IoTestCase):
             'two': 5,
             'three': 6,
         }]
-        self.types = ('csv', 'json', 'xml', 'xls', 'xlsx')
+        self.types = ('csv', 'json', 'xml', 'xls', 'xlsx', 'yaml')
         self.classes = (
             CsvFileIter,
             JsonFileIter,
             XmlFileIter,
             ExcelFileIter,
             ExcelFileIter,
+            YamlParser
         )
 
     def test_write_file(self):
