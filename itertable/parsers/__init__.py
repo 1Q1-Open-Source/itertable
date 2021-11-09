@@ -1,10 +1,12 @@
-from .text import CsvParser, JsonParser, XmlParser
-from .xls import ExcelParser
+from .text import CsvParser, JsonParser, XmlParser, YamlParser
+from .xls import ExcelXlsParser, ExcelXlsxParser
 
 
 __all__ = (
     'CsvParser',
     'JsonParser',
     'XmlParser',
-    'ExcelParser',
+    'ExcelXlsParser',
+    'ExcelXlsxParser',
+    'YamlParser'
 )

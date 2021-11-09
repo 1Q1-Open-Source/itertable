@@ -29,7 +29,7 @@ setup(
     description=LONG_DESCRIPTION.strip(),
     long_description=readme(),
     long_description_content_type='text/markdown',
-    install_requires=['requests', 'xlrd', 'click'],
+    install_requires=['requests', 'xlrd', 'openpyxl', 'click', 'pyyaml'],
     extras_require={
         'gis': ['Fiona', 'geopandas'],
         'pandas': ['pandas'],
@@ -54,6 +54,6 @@ setup(
         'Topic :: Utilities',
     ],
     tests_require=['httpretty', 'beautifulsoup4', 'Shapely', 'Fiona',
-                   'xlwt', 'xlsxwriter', 'pandas', 'geopandas'],
+                   'xlwt', 'xlsxwriter', 'pandas', 'geopandas', 'pyyaml', 'openpyxl'],
     test_suite='tests',
 )

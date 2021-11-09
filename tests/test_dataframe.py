@@ -22,7 +22,7 @@ class LoadFileTestCase(IoTestCase):
         df = io.as_dataframe()
         self.assertEqual(len(df), 2)
 
-        val = df.ix[4].three
+        val = df.loc[4].three
         self.assertEqual(val, 6)
 
     def test_csv_dataframe(self):

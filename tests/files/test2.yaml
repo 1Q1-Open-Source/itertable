@@ -1,0 +1,8 @@
+---
+# This is a comment and should be ignored.
+- one: 1
+  two: 2
+  three: 3
+- one: 4
+  two: 5
+  three: 6

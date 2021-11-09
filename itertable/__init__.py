@@ -14,7 +14,8 @@ from .parsers import (
     CsvParser,
     JsonParser,
     XmlParser,
-    ExcelParser,
+    ExcelXlsParser,
+    YamlParser,
 )
 
 from .mappers import (
@@ -51,7 +52,8 @@ __all__ = (
     'CsvParser',
     'JsonParser',
     'XmlParser',
-    'ExcelParser',
+    'ExcelXlsParser',
+    'YamlParser',
 
     'BaseMapper',
     'DictMapper',
@@ -80,6 +82,10 @@ __all__ = (
     'XmlNetIter',
     'XmlStringIter',
 
+    'YamlFileIter',
+    'YamlNetIter',
+    'YamlStringIter',
+
     'ExcelFileIter',
 )
 
@@ -96,8 +102,12 @@ XmlFileIter = make_iter(FileLoader, XmlParser)
 XmlNetIter = make_iter(NetLoader, XmlParser)
 XmlStringIter = make_iter(StringLoader, XmlParser)
 
-ExcelFileIter = make_iter(FileLoader, ExcelParser)
-ExcelNetIter = make_iter(NetLoader, ExcelParser)
+YamlFileIter = make_iter(FileLoader, YamlParser)
+YamlNetIter = make_iter(NetLoader, YamlParser)
+YamlStringIter = make_iter(StringLoader, YamlParser)
+
+ExcelFileIter = make_iter(FileLoader, ExcelXlsParser)
+ExcelNetIter = make_iter(NetLoader, ExcelXlsParser)
 
 try:
     from .gis import GisIter, ShapeIter, WktIter

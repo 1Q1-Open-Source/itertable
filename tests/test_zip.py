@@ -1,6 +1,6 @@
 from itertable import (
     ZipFileLoader, ZipNetLoader,
-    CsvParser, ExcelParser, TupleMapper, BaseIter
+    CsvParser, ExcelXlsParser, TupleMapper, BaseIter
 )
 from .base import IoTestCase
 from itertable.exceptions import LoadFailed
@@ -11,7 +11,7 @@ class CsvZipFileIter(ZipFileLoader, CsvParser, TupleMapper, BaseIter):
     inner_binary = CsvParser.binary
 
 
-class ExcelZipFileIter(ZipFileLoader, ExcelParser, TupleMapper, BaseIter):
+class ExcelZipFileIter(ZipFileLoader, ExcelXlsParser, TupleMapper, BaseIter):
     inner_binary = True
 
 
@@ -20,7 +20,7 @@ class CsvZipNetIter(ZipNetLoader, CsvParser, TupleMapper, BaseIter):
     inner_binary = CsvParser.binary
 
 
-class ExcelZipNetIter(ZipNetLoader, ExcelParser, TupleMapper, BaseIter):
+class ExcelZipNetIter(ZipNetLoader, ExcelXlsParser, TupleMapper, BaseIter):
     url = "http://example.com/testxls.zip"
     inner_binary = True
 

@@ -21,7 +21,7 @@ class LoadFileTestCase(IoTestCase):
             XmlFileIter,
             ExcelFileIter,
             ExcelFileIter,
-            YamlParser
+
         )
 
     def test_write_file(self):
