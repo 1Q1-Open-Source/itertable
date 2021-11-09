@@ -57,3 +57,4 @@ class LoadFileTestCase(IoTestCase):
             self.check_instance(instance)
             instance = pickle.loads(pickle.dumps(instance))
             self.check_instance(instance)
+

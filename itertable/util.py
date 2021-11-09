@@ -23,6 +23,11 @@ PARSERS = {
 
 # Save generated classes to avoid recreating them
 _iter_classes = {}
+# Register YAML MimeTypes if not present (resolves issues on macOS, etc)
+if ".yaml" not in mimetypes.types_map:
+    mimetypes.add_type("application/vnd.yaml", ".yaml", strict=False)
+if ".yml" not in mimetypes.types_map:
+    mimetypes.add_type("application/vnd.yaml", ".yml", strict=False)
 
 
 def make_iter(loader, parser, mapper=TupleMapper,
@@ -49,7 +54,7 @@ def make_iter(loader, parser, mapper=TupleMapper,
 
 
 def guess_type(filename, buffer=None):
-    mimetype, encoding = mimetypes.guess_type(filename)
+    mimetype, encoding = mimetypes.guess_type(filename, strict=False)
     if mimetype is None:
         try:
             import magic

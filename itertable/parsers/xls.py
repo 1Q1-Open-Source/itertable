@@ -252,10 +252,10 @@ class ExcelXlsxParser(WorkbookParser):
 
     @property
     def sheet_names(self):
-        return self.workbook.get_sheet_names()
+        return self.workbook.sheetnames
 
     def get_sheet_by_name(self, name):
-        return self.workbook.get_sheet_by_name(name)
+        return self.workbook[name]
 
     def parse_worksheet(self, name):
         worksheet = self.get_sheet_by_name(name)
