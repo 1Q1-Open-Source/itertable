@@ -136,10 +136,11 @@ class YamlParser(BaseParser):
 
     def parse(self):
         try:
-            obj = yaml.safe_load(self.file)
+            obj = yaml.safe_load_all(self.file)
             if self.namespace:
                 for key in self.namespace.split('.'):
                     obj = obj[key]
+            # self.data = obj
             self.data = list(map(self.parse_item, obj))
         except ValueError:
             raise ParseFailed
@@ -154,7 +155,7 @@ class YamlParser(BaseParser):
         if self.namespace:
             for key in reversed(self.namespace.split('.')):
                 obj = {key: obj}
-        yaml.safe_dump(obj, file, indent=self.indent)
+        yaml.safe_dump_all(obj, file, indent=self.indent)
 
     def dump_item(self, item):
         return item
